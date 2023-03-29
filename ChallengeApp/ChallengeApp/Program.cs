@@ -1,20 +1,18 @@
-﻿string name = "Marcin";
-char sex = 'M';
-int age = 40;
+﻿int number = 1257857774;
+string numberInString = number.ToString();
+char[] letters = numberInString.ToArray();
 
-if(sex=='W' && age<30)
-    {
-    Console.WriteLine("Kobieta poniżej 30 lat"); 
-    }   
-else if(name == "Ewa" && age == 33) 
-    {
-    Console.WriteLine("Ewa lat 33");
-    }
-else if( age<18 && sex=='M')
-    {
-    Console.WriteLine("Niepełnoletni mężczyzna");
-    }
-else
-    {
-    Console.WriteLine("Żaden warunek nie jest spełniony");
-    }
+Console.WriteLine("Wyniki dla liczby " + number);
+Console.WriteLine("==================================================");
+for (int k = 0; k < 10; k++)
+        {
+        int numberDigits = 0;
+        for (int i = 0; i < letters.Length; i++)
+            {
+             if (letters[i].ToString() == k.ToString())
+                {
+             numberDigits ++;
+                }
+             }
+        Console.WriteLine(k + " => " + numberDigits);
+        }
