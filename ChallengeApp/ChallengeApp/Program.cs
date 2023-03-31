@@ -1,7 +1,7 @@
 ﻿using ChallengeApp;
 using System;
 
-List<Employee> employers = new List<Employee>();
+List<Employee> employees = new List<Employee>();
 
 Employee employee1 = new Employee("Adam", "Nowak", 34);
 Employee employee2 = new Employee("Ewa", "Kowalska", 31);
@@ -22,13 +22,13 @@ employee3.AddScore(7);
 employee3.AddScore(3);
 employee3.AddScore(9);
 
-employers.Add(employee1);
-employers.Add(employee2);
-employers.Add(employee3);
+employees.Add(employee1);
+employees.Add(employee2);
+employees.Add(employee3);
 
 int maxResult = 0;
 Employee employeeWithMaxresult = null;
-foreach (var employee in employers)
+foreach (var employee in employees)
 {
     if(employee.Result >  maxResult)
     { 
