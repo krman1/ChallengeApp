@@ -11,7 +11,7 @@ employee1.AddScore(7);
 employee1.AddScore(3);
 employee1.AddScore(8);
 employee1.AddScore(1);
-employee2.AddScore(2);
+employee2.AddScore(-2);
 employee2.AddScore(5);
 employee2.AddScore(9);
 employee2.AddScore(8);
@@ -25,6 +25,7 @@ employee3.AddScore(9);
 employees.Add(employee1);
 employees.Add(employee2);
 employees.Add(employee3);
+
 
 int maxResult = 0;
 Employee employeeWithMaxresult = null;
