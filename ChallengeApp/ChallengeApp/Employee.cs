@@ -10,6 +10,11 @@
             this.Surname = surname;
             this.Age = age;
         }
+        public Employee(string name, string surname)
+        {
+            this.Name = name;
+            this.Surname = surname;
+        }
         public Employee(string name)
         {
             this.Name = name;
@@ -37,6 +42,23 @@
         public void AddScore(int raiting)
         {
             this.score.Add(raiting);
+        }
+        public Statistics GetStatistics() 
+        { 
+            var statistics = new Statistics();
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue; 
+
+            foreach (var score in this.score) 
+            {
+                statistics.Max = Math.Max(statistics.Max, score);
+                statistics.Min = Math.Min(statistics.Min, score);
+                statistics.Average += score;
+            }
+
+            statistics.Average /= this.score.Count;
+            return statistics;
         }
     }
 }

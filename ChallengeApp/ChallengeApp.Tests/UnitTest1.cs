@@ -4,10 +4,10 @@ namespace ChallengeApp.Tests
     {
     
         [Test]
-        public void ResultTestWithAllPozitiveRating()
+        public void GetStatisticsMaxTest()
         {
             // arrange
-            Employee employee = new Employee("Adam", "Nowak", 34);
+            Employee employee = new Employee("Adam", "Nowak");
             employee.AddScore(5);
             employee.AddScore(7);
             employee.AddScore(3);
@@ -15,27 +15,47 @@ namespace ChallengeApp.Tests
             employee.AddScore(1);
 
             // act
-            int result = employee.Result;
+            var statistics = employee.GetStatistics();
+            var result = statistics.Max;
 
             // assert
-            Assert.AreEqual(24, result);
+            Assert.AreEqual(8, result);
         }
         [Test]
-        public void ResultTestWithNegativeRating()
+        public void ReGetStatisticsMinTest()
         {
             // arrange
-            Employee employee = new Employee("Adam", "Nowak", 34);
+            Employee employee = new Employee("Adam", "Nowak");
             employee.AddScore(5);
             employee.AddScore(7);
-            employee.AddScore(-3);
+            employee.AddScore(3);
             employee.AddScore(8);
             employee.AddScore(1);
 
             // act
-            int result = employee.Result;
+            var statistics = employee.GetStatistics();
+            var result = statistics.Min;
 
             // assert
-            Assert.AreEqual(18, result);
+            Assert.AreEqual(1, result);
+        }
+        [Test]
+        public void ReGetStatisticsAverageTest()
+        {
+            // arrange
+            Employee employee = new Employee("Adam", "Nowak");
+            employee.AddScore(5);
+            employee.AddScore(7);
+            employee.AddScore(3);
+            employee.AddScore(8);
+            employee.AddScore(1);
+
+            // act
+            var statistics = employee.GetStatistics();
+            var result = Math.Round(statistics.Average);
+
+            // assert
+            Assert.AreEqual(5, result);
         }
     }
 }
