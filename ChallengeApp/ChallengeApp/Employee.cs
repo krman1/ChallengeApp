@@ -2,7 +2,7 @@
 {
     public class Employee
     {
-        private List<int> score = new List<int>();
+        private List<float> score = new List<float>();
 
         public Employee(string name, string surname, int age)
         {
@@ -32,16 +32,41 @@
         {
             get; private set;
         }
-        public int Result
+        
+        public void AddScore(float raiting)
         {
-            get
+            if (raiting >= 0 && raiting <= 100)
             {
-                return this.score.Sum();
+                this.score.Add(raiting);
+            }
+            else
+            {
+                Console.WriteLine("Invalid data, use numbers between 0 - 100 ");
             }
         }
-        public void AddScore(int raiting)
+
+        public void AddScore(string raiting)
         {
-            this.score.Add(raiting);
+            if (float.TryParse(raiting, out float result))
+            {
+                this.AddScore(result);
+            }
+            else 
+            {
+                Console.WriteLine("Wrong string");
+            }
+        }
+
+        public void AddScore(double raiting)
+        {
+            float result = (float)raiting;
+            this.AddScore(result);     
+        }
+
+        public void AddScore(long raiting)
+        {
+            float result = (float)raiting;
+            this.AddScore(result);
         }
         public Statistics GetStatistics() 
         { 
