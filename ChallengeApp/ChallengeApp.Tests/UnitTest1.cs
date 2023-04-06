@@ -4,58 +4,93 @@ namespace ChallengeApp.Tests
     {
     
         [Test]
-        public void AddScoreWithStringTest()
+        public void AddGetStatisticsWithForEachTest()
         {
             // arrange
             Employee employee = new Employee("Adam", "Nowak");
             employee.AddScore(5);
             employee.AddScore(7);
-            employee.AddScore("3");
+            employee.AddScore(3);
             employee.AddScore(8);
             employee.AddScore(2);
 
             // act
-            var statistics = employee.GetStatistics();
+            var statistics = employee.GetStatisticsWithForEach();
             var result = Math.Round(statistics.Average);
+            var result1 = Math.Round(statistics.Min);
+            var result2 = Math.Round(statistics.Max);
 
             // assert
             Assert.AreEqual(5, result);
+            Assert.AreEqual(2, result1);
+            Assert.AreEqual(8, result2);
         }
         [Test]
-        public void AddScoreWithFloatTest()
+        public void AddGetStatisticsWithForTest()
         {
             // arrange
             Employee employee = new Employee("Adam", "Nowak");
             employee.AddScore(5);
-            employee.AddScore(4f);
+            employee.AddScore(7);
             employee.AddScore(3);
-            employee.AddScore(7);
-            employee.AddScore(1);
+            employee.AddScore(8);
+            employee.AddScore(2);
 
             // act
-            var statistics = employee.GetStatistics();
+            var statistics = employee.GetStatisticsWithFor();
             var result = Math.Round(statistics.Average);
+            var result1 = Math.Round(statistics.Min);
+            var result2 = Math.Round(statistics.Max);
 
             // assert
-            Assert.AreEqual(4, result);
+            Assert.AreEqual(5, result);
+            Assert.AreEqual(2, result1);
+            Assert.AreEqual(8, result2);
         }
         [Test]
-        public void AddScoreWithDoubleTest()
+        public void AddGetStatisticsWithDoWileTest()
         {
             // arrange
             Employee employee = new Employee("Adam", "Nowak");
             employee.AddScore(5);
             employee.AddScore(7);
-            employee.AddScore(4d);
+            employee.AddScore(3);
             employee.AddScore(8);
-            employee.AddScore(1);
+            employee.AddScore(2);
 
             // act
-            var statistics = employee.GetStatistics();
+            var statistics = employee.GetStatisticsWithDoWhile();
             var result = Math.Round(statistics.Average);
+            var result1 = Math.Round(statistics.Min);
+            var result2 = Math.Round(statistics.Max);
 
             // assert
             Assert.AreEqual(5, result);
+            Assert.AreEqual(2, result1);
+            Assert.AreEqual(8, result2);
         }
+        [Test]
+        public void AddGetStatisticsWithWhileTest()
+        {
+            // arrange
+            Employee employee = new Employee("Adam", "Nowak");
+            employee.AddScore(5);
+            employee.AddScore(7);
+            employee.AddScore(3);
+            employee.AddScore(8);
+            employee.AddScore(2);
+
+            // act
+            var statistics = employee.GetStatisticsWithWhile();
+            var result = Math.Round(statistics.Average);
+            var result1 = Math.Round(statistics.Min);
+            var result2 = Math.Round(statistics.Max);
+
+            // assert
+            Assert.AreEqual(5, result);
+            Assert.AreEqual(2, result1);
+            Assert.AreEqual(8, result2);
+        }
+
     }
 }
