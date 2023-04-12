@@ -68,6 +68,35 @@
             float result = (float)raiting;
             this.AddScore(result);
         }
+        public void AddScore(char raiting)
+        {
+            switch (raiting)
+            {
+                case 'a':
+                case 'A':
+                    this.score.Add(100);
+                    break;
+                case 'b':
+                case 'B':
+                    this.score.Add(80);
+                    break;
+                case 'c':
+                case 'C':
+                    this.score.Add(60);
+                    break;
+                case 'd':
+                case 'D':
+                    this.score.Add(40);
+                    break;
+                case 'e':
+                case 'E':
+                    this.score.Add(20);
+                    break;
+                default:
+                    Console.WriteLine("Wrong letter");
+                    break;
+            }
+        }
         public Statistics GetStatistics() 
         { 
             var statistics = new Statistics();
@@ -83,78 +112,26 @@
             }
 
             statistics.Average /= this.score.Count;
-            return statistics;
-        }
-        public Statistics GetStatisticsWithForEach()
-        {
-            var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
 
-            foreach (var score in this.score)
+            switch(statistics.Average)
             {
-                statistics.Max = Math.Max(statistics.Max, score);
-                statistics.Min = Math.Min(statistics.Min, score);
-                statistics.Average += score;
+                case var average when average >= 80:
+                    statistics.AverageLetter = 'A';
+                    break;
+                case var average when average >= 60:
+                    statistics.AverageLetter = 'B';
+                    break;
+                case var average when average >= 40:
+                    statistics.AverageLetter = 'C';
+                    break;
+                case var average when average >= 20:
+                    statistics.AverageLetter = 'D';
+                    break;
+                default:
+                    statistics.AverageLetter = 'E';
+                    break;
             }
 
-            statistics.Average /= this.score.Count;
-            return statistics;
-        }
-        public Statistics GetStatisticsWithFor()
-        {
-            var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
-            for (int i=0; i<score.Count; i++)
-            {
-                statistics.Max = Math.Max(statistics.Max, score[i]);
-                statistics.Min = Math.Min(statistics.Min, score[i]);
-                statistics.Average += score[i];
-            }
-
-            statistics.Average /= this.score.Count;
-            return statistics;
-        }
-        public Statistics GetStatisticsWithDoWhile()
-        {
-            var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-            int i = 0;
-
-            do
-            {
-                statistics.Max = Math.Max(statistics.Max, score[i]);
-                statistics.Min = Math.Min(statistics.Min, score[i]);
-                statistics.Average += score[i];
-                i++;
-            } while (i < score.Count) ;
-
-            statistics.Average /= this.score.Count;
-            return statistics;
-        }
-        public Statistics GetStatisticsWithWhile()
-        {
-            var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-            int i = 0;
-
-            while (i < score.Count) 
-            {
-                statistics.Max = Math.Max(statistics.Max, score[i]);
-                statistics.Min = Math.Min(statistics.Min, score[i]);
-                statistics.Average += score[i];
-                i++;
-            } 
-
-            statistics.Average /= this.score.Count;
             return statistics;
         }
 

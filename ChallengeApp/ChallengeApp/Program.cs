@@ -3,13 +3,30 @@ using System;
 
 var employee = new Employee("Adam", "Nowak");
 
-employee.AddScore(2); 
-employee.AddScore(2);
-employee.AddScore(6);
+Console.WriteLine("Witamy w programie XYZ do oceny Pracowników");
+Console.WriteLine("=============================================");
+Console.WriteLine();
+
+
+while (true)
+{
+    Console.WriteLine("Podaj kolejną ocenę pracownika");
+    var input = Console.ReadLine();
+    if (input == "q")
+    { 
+        break;
+    }  
+    employee.AddScore(input);  
+}
 
 var statistics = employee.GetStatistics();
-Console.WriteLine($"Averange: {statistics.Average:N2}");
+Console.WriteLine($"Average: {statistics.Average}");
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Max: {statistics.Max}");
+Console.WriteLine($"AverageLetter: {statistics.AverageLetter}");
+
+
+
+
 
 

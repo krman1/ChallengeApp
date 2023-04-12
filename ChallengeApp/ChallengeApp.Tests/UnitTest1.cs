@@ -4,92 +4,44 @@ namespace ChallengeApp.Tests
     {
     
         [Test]
-        public void AddGetStatisticsWithForEachTest()
-        {
+        public void AddGetStatisticsWithDifferentDataTest()
+        {   
             // arrange
             Employee employee = new Employee("Adam", "Nowak");
-            employee.AddScore(5);
-            employee.AddScore(7);
-            employee.AddScore(3);
-            employee.AddScore(8);
+            employee.AddScore(54);
+            employee.AddScore("5");
+            employee.AddScore('A');
+            employee.AddScore(83);
             employee.AddScore(2);
 
             // act
-            var statistics = employee.GetStatisticsWithForEach();
+            var statistics = employee.GetStatistics();
             var result = Math.Round(statistics.Average);
-            var result1 = Math.Round(statistics.Min);
-            var result2 = Math.Round(statistics.Max);
+            var result1 = (statistics.Min);
+            var result2 = (statistics.Max);
 
             // assert
-            Assert.AreEqual(5, result);
+            Assert.AreEqual(49, result);
             Assert.AreEqual(2, result1);
-            Assert.AreEqual(8, result2);
+            Assert.AreEqual(100, result2);
         }
         [Test]
-        public void AddGetStatisticsWithForTest()
+        public void AverageLetterTest()
         {
             // arrange
             Employee employee = new Employee("Adam", "Nowak");
-            employee.AddScore(5);
-            employee.AddScore(7);
-            employee.AddScore(3);
-            employee.AddScore(8);
+            employee.AddScore(54);
+            employee.AddScore("5");
+            employee.AddScore('A');
+            employee.AddScore(83);
             employee.AddScore(2);
 
             // act
-            var statistics = employee.GetStatisticsWithFor();
-            var result = Math.Round(statistics.Average);
-            var result1 = Math.Round(statistics.Min);
-            var result2 = Math.Round(statistics.Max);
+            var statistics = employee.GetStatistics();
+            var result = (statistics.AverageLetter);
 
             // assert
-            Assert.AreEqual(5, result);
-            Assert.AreEqual(2, result1);
-            Assert.AreEqual(8, result2);
-        }
-        [Test]
-        public void AddGetStatisticsWithDoWileTest()
-        {
-            // arrange
-            Employee employee = new Employee("Adam", "Nowak");
-            employee.AddScore(5);
-            employee.AddScore(7);
-            employee.AddScore(3);
-            employee.AddScore(8);
-            employee.AddScore(2);
-
-            // act
-            var statistics = employee.GetStatisticsWithDoWhile();
-            var result = Math.Round(statistics.Average);
-            var result1 = Math.Round(statistics.Min);
-            var result2 = Math.Round(statistics.Max);
-
-            // assert
-            Assert.AreEqual(5, result);
-            Assert.AreEqual(2, result1);
-            Assert.AreEqual(8, result2);
-        }
-        [Test]
-        public void AddGetStatisticsWithWhileTest()
-        {
-            // arrange
-            Employee employee = new Employee("Adam", "Nowak");
-            employee.AddScore(5);
-            employee.AddScore(7);
-            employee.AddScore(3);
-            employee.AddScore(8);
-            employee.AddScore(2);
-
-            // act
-            var statistics = employee.GetStatisticsWithWhile();
-            var result = Math.Round(statistics.Average);
-            var result1 = Math.Round(statistics.Min);
-            var result2 = Math.Round(statistics.Max);
-
-            // assert
-            Assert.AreEqual(5, result);
-            Assert.AreEqual(2, result1);
-            Assert.AreEqual(8, result2);
+            Assert.AreEqual('C', result);
         }
 
     }
