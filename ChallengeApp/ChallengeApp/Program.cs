@@ -15,8 +15,15 @@ while (true)
     if (input == "q")
     { 
         break;
-    }  
-    employee.AddScore(input);  
+    }
+    try
+    {
+        employee.AddScore(input);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Exeption catched: {e.Message}");
+    }
 }
 
 var statistics = employee.GetStatistics();

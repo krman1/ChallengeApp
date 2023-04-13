@@ -41,7 +41,7 @@
             }
             else
             {
-                Console.WriteLine("Invalid data, use numbers between 0 - 100 ");
+                throw new Exception("Invalid data, use numbers between 0 - 100 ");
             }
         }
 
@@ -53,7 +53,7 @@
             }
             else 
             {
-                Console.WriteLine("Wrong string");
+                throw new Exception("Wrong string");
             }
         }
 
@@ -93,8 +93,7 @@
                     this.score.Add(20);
                     break;
                 default:
-                    Console.WriteLine("Wrong letter");
-                    break;
+                    throw new Exception("Wrong letter");
             }
         }
         public Statistics GetStatistics() 
