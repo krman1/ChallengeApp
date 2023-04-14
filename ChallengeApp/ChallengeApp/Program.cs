@@ -3,6 +3,7 @@ using System;
 
 var employee = new Employee("Adam", "Nowak");
 
+
 Console.WriteLine("Witamy w programie XYZ do oceny Pracowników");
 Console.WriteLine("=============================================");
 Console.WriteLine();
