@@ -4,44 +4,25 @@ namespace ChallengeApp.Tests
     {
     
         [Test]
-        public void AddGetStatisticsWithDifferentDataTest()
-        {   
+        public void AddGetStatisticsForSupervizorTest()
+        {
             // arrange
-            Employee employee = new Employee("Adam", "Nowak");
-            employee.AddScore(54);
-            employee.AddScore("5");
-            employee.AddScore('A');
-            employee.AddScore(83);
-            employee.AddScore(2);
+            var supervizor = new Supervizor("£ukasz", "Kowalski"); ;
+            supervizor.AddScore("1");
+            supervizor.AddScore("2");
+            supervizor.AddScore("-3");
+            supervizor.AddScore("4+");
 
             // act
-            var statistics = employee.GetStatistics();
+            var statistics = supervizor.GetStatistics();
             var result = Math.Round(statistics.Average);
             var result1 = (statistics.Min);
             var result2 = (statistics.Max);
 
             // assert
-            Assert.AreEqual(49, result);
-            Assert.AreEqual(2, result1);
-            Assert.AreEqual(100, result2);
-        }
-        [Test]
-        public void AverageLetterTest()
-        {
-            // arrange
-            Employee employee = new Employee("Adam", "Nowak");
-            employee.AddScore(54);
-            employee.AddScore("5");
-            employee.AddScore('A');
-            employee.AddScore(83);
-            employee.AddScore(2);
-
-            // act
-            var statistics = employee.GetStatistics();
-            var result = (statistics.AverageLetter);
-
-            // assert
-            Assert.AreEqual('C', result);
+            Assert.AreEqual(30, result);
+            Assert.AreEqual(0, result1);
+            Assert.AreEqual(65, result2);
         }
 
     }

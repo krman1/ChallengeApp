@@ -1,24 +1,18 @@
-﻿namespace ChallengeApp
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ChallengeApp
 {
-    public class Employee : IEmployee 
-
+    public class Supervizor : IEmployee
     {
-        private List<float> score = new List<float>();
-
-        public Employee(string name, string surname, int age)  
+        private List<float> scoreSupervizors = new List<float>();
+        public Supervizor(string name, string surname)
         {
             this.Name = name;
             this.Surname = surname;
-            this.Age = age;
-        }
-        public Employee(string name, string surname)
-        {
-            this.Name = name;
-            this.Surname = surname;
-        }
-        public Employee(string name)
-        {
-            this.Name = name;
         }
         public string Name
         {
@@ -28,15 +22,11 @@
         {
             get; private set;
         }
-        public int Age
-        {
-            get; private set;
-        }
         public void AddScore(float raiting)
         {
             if (raiting >= 0 && raiting <= 100)
             {
-                this.score.Add(raiting);
+                this.scoreSupervizors.Add(raiting);
             }
             else
             {
@@ -46,20 +36,52 @@
 
         public void AddScore(string raiting)
         {
-            if (float.TryParse(raiting, out float result))
+            char[] letters = raiting.ToArray();
+            int plus = 0;
+            int minus = 0;
+            int scoreFromLetter = 0;
+            if (letters.Length > 0 && letters.Length < 3)
             {
-                this.AddScore(result);
+                for (int i = 0; i < letters.Length; i++)
+                {
+
+                    switch (letters[i])
+                    {
+                        case '-':
+                            minus = -5;
+                            break;
+                        case '+':
+                            plus = 5;
+                            break;
+                        case '1':
+                            plus = 0;
+                            break;
+                        case '2':
+                            plus = 20;
+                            break;
+                    }
+                    for (int k = 3; k < 7; k++)
+                    {
+                        if (letters[i].ToString() == k.ToString())
+                        {
+                            scoreFromLetter = k * 10 + ((k - 2) * 10);
+                        }
+                    }
+
+                }
+                this.AddScore(scoreFromLetter + plus + minus);
+
             }
-            else 
+            else
             {
-                throw new Exception("Wrong string");
+                throw new Exception("Wrong data");
             }
         }
 
         public void AddScore(double raiting)
         {
             float result = (float)raiting;
-            this.AddScore(result);     
+            this.AddScore(result);
         }
 
         public void AddScore(long raiting)
@@ -73,45 +95,46 @@
             {
                 case 'a':
                 case 'A':
-                    this.score.Add(100);
+                    this.scoreSupervizors.Add(100);
                     break;
                 case 'b':
                 case 'B':
-                    this.score.Add(80);
+                    this.scoreSupervizors.Add(80);
                     break;
                 case 'c':
                 case 'C':
-                    this.score.Add(60);
+                    this.scoreSupervizors.Add(60);
                     break;
                 case 'd':
                 case 'D':
-                    this.score.Add(40);
+                    this.scoreSupervizors.Add(40);
                     break;
                 case 'e':
                 case 'E':
-                    this.score.Add(20);
+                    this.scoreSupervizors.Add(20);
                     break;
                 default:
                     throw new Exception("Wrong letter");
             }
+
         }
-        public Statistics GetStatistics() 
-        { 
+        public Statistics GetStatistics()
+        {
             var statistics = new Statistics();
             statistics.Average = 0;
             statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue; 
+            statistics.Min = float.MaxValue;
 
-            foreach (var score in this.score) 
+            foreach (var score in this.scoreSupervizors)
             {
                 statistics.Max = Math.Max(statistics.Max, score);
                 statistics.Min = Math.Min(statistics.Min, score);
                 statistics.Average += score;
             }
 
-            statistics.Average /= this.score.Count;
+            statistics.Average /= this.scoreSupervizors.Count;
 
-            switch(statistics.Average)
+            switch (statistics.Average)
             {
                 case var average when average >= 80:
                     statistics.AverageLetter = 'A';
@@ -132,7 +155,5 @@
 
             return statistics;
         }
-
     }
 }
-
