@@ -40,7 +40,7 @@ namespace ChallengeApp
             int plus = 0;
             int minus = 0;
             int scoreFromLetter = 0;
-            if (letters.Length > 0 && letters.Length < 3)
+            if (letters.Length < 3)
             {
                 for (int i = 0; i < letters.Length; i++)
                 {
@@ -64,7 +64,7 @@ namespace ChallengeApp
                     {
                         if (letters[i].ToString() == k.ToString())
                         {
-                            scoreFromLetter = k * 10 + ((k - 2) * 10);
+                            scoreFromLetter = k * 10 + (k - 2) * 10;
                         }
                     }
 
