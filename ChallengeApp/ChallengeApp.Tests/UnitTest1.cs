@@ -4,25 +4,28 @@ namespace ChallengeApp.Tests
     {
     
         [Test]
-        public void AddGetStatisticsForSupervizorTest()
+        public void GetStatisticsInEmployeeFileTest()
         {
             // arrange
-            var supervizor = new Supervizor("£ukasz", "Kowalski"); ;
-            supervizor.AddScore("1");
-            supervizor.AddScore("2");
-            supervizor.AddScore("-3");
-            supervizor.AddScore("4+");
+            var employeeFile = new EmployeeInFile("£ukasz", "Kowalski"); ;
+            employeeFile.AddScore(5f);
+            employeeFile.AddScore("15");
+            employeeFile.AddScore('d');
 
             // act
-            var statistics = supervizor.GetStatistics();
+            var statistics = employeeFile.GetStatistics();
             var result = Math.Round(statistics.Average);
             var result1 = (statistics.Min);
             var result2 = (statistics.Max);
+            var result3 = (statistics.AverageLetter);
 
             // assert
-            Assert.AreEqual(30, result);
-            Assert.AreEqual(0, result1);
-            Assert.AreEqual(65, result2);
+            Assert.AreEqual(20, result);
+            Assert.AreEqual(5, result1);
+            Assert.AreEqual(40, result2);
+            Assert.AreEqual('D', result3);
+
+
         }
 
     }

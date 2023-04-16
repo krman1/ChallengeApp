@@ -1,43 +1,18 @@
 ﻿namespace ChallengeApp
 {
-    public class Employee : IEmployee 
-
+    public class EmployeeInMemory : EmployeeBase
     {
         private List<float> score = new List<float>();
-
-        public Employee(string name, string surname, int age)  
+        public EmployeeInMemory(string name, string surname) 
+            : base(name, surname)
         {
-            this.Name = name;
-            this.Surname = surname;
-            this.Age = age;
         }
-        public Employee(string name, string surname)
-        {
-            this.Name = name;
-            this.Surname = surname;
-        }
-        public Employee(string name)
-        {
-            this.Name = name;
-        }
-        public string Name
-        {
-            get; private set;
-        }
-        public string Surname
-        {
-            get; private set;
-        }
-        public int Age
-        {
-            get; private set;
-        }
-        public void AddScore(int raiting)
+        public override void AddScore(int raiting)
         {
             float result = raiting;
             this.AddScore(result);
         }
-        public void AddScore(float raiting)
+        public override void AddScore(float raiting)
         {
             if (raiting >= 0 && raiting <= 100)
             {
@@ -49,30 +24,25 @@
             }
         }
 
-        public void AddScore(string raiting)
+        public override void AddScore(string raiting)
         {
             if (float.TryParse(raiting, out float result))
             {
                 this.AddScore(result);
             }
-            else 
+            else
             {
                 throw new Exception("Wrong string");
             }
         }
 
-        public void AddScore(double raiting)
-        {
-            float result = (float)raiting;
-            this.AddScore(result);     
-        }
-
-        public void AddScore(long raiting)
+        public override void AddScore(double raiting)
         {
             float result = (float)raiting;
             this.AddScore(result);
         }
-        public void AddScore(char raiting)
+
+        public override void AddScore(char raiting)
         {
             switch (raiting)
             {
@@ -100,7 +70,8 @@
                     throw new Exception("Wrong letter");
             }
         }
-        public Statistics GetStatistics() 
+
+        public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
             statistics.Average = 0;
@@ -116,7 +87,7 @@
 
             statistics.Average /= this.score.Count;
 
-            switch(statistics.Average)
+            switch (statistics.Average)
             {
                 case var average when average >= 80:
                     statistics.AverageLetter = 'A';
@@ -137,7 +108,5 @@
 
             return statistics;
         }
-
     }
 }
-

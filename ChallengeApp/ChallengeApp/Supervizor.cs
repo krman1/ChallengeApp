@@ -22,6 +22,11 @@ namespace ChallengeApp
         {
             get; private set;
         }
+        public void AddScore(int raiting)
+        {
+            float result = raiting;
+            this.AddScore(result);
+        }
         public void AddScore(float raiting)
         {
             if (raiting >= 0 && raiting <= 100)
