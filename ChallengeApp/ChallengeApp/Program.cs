@@ -1,22 +1,27 @@
 ﻿using ChallengeApp;
 
-var employeeFile = new EmployeeInFile("Adam", "Nowak");
+
 
 Console.WriteLine("Witamy w programie XYZ do oceny Pracowników");
 Console.WriteLine("=============================================");
 Console.WriteLine();
 
-employeeFile.AddScore(5f);
-employeeFile.AddScore("15");
-employeeFile.AddScore('d');
+var employee = new EmployeeInMemory("Adam", "Nowak");
+employee.GradeAdded += employee.EmployeeGradeAdded;
 
-var statisticsFile = employeeFile.GetStatistics();
+employee.AddScore(10f);
 
-Console.WriteLine($"Average: {statisticsFile.Average}");
+var employeeInFile = new EmployeeInFile("Ewa", "Kowalska");
+employeeInFile.GradeAdded += employeeInFile.EmployeeGradeAdded;
+
+employeeInFile.AddScore(15f);
+
+
+/*Console.WriteLine($"Average: {statisticsFile.Average}");
 Console.WriteLine($"Min: {statisticsFile.Min}");
 Console.WriteLine($"Max: {statisticsFile.Max}");
-Console.WriteLine($"AverageLetter: {statisticsFile.AverageLetter}");
-employeeFile.ClearFile();   
+Console.WriteLine($"AverageLetter: {statisticsFile.AverageLetter}");*/
+//employeeFile.ClearFile();   
 
 
 

@@ -2,8 +2,12 @@
 {
     public class EmployeeInMemory : EmployeeBase
     {
+        public delegate void GradeAddedDelegate(object sender, EventArgs args);
+
+        public event GradeAddedDelegate GradeAdded;
+
         private List<float> score = new List<float>();
-        public EmployeeInMemory(string name, string surname) 
+        public EmployeeInMemory(string name, string surname)
             : base(name, surname)
         {
         }
@@ -17,6 +21,10 @@
             if (raiting >= 0 && raiting <= 100)
             {
                 this.score.Add(raiting);
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
@@ -107,6 +115,10 @@
             }
 
             return statistics;
+        }
+        public void EmployeeGradeAdded(object sender, EventArgs args)
+        {
+            Console.WriteLine("Dodano nową ocenę pracownikowi: " + Name);
         }
     }
 }

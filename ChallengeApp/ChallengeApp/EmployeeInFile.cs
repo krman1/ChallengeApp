@@ -2,6 +2,10 @@
 {
     public class EmployeeInFile : EmployeeBase
     {
+        public delegate void GradeAddedDelegate(object sender, EventArgs args);
+
+        public event GradeAddedDelegate GradeAdded;
+
         private const string fileName = "grades.txt";
         public EmployeeInFile(string name, string surname) : 
             base(name, surname)
@@ -19,6 +23,11 @@
                 using (var writen = File.AppendText(fileName))
                 {
                     writen.WriteLine(raiting);
+
+                    if (GradeAdded != null)
+                    {
+                        GradeAdded(this, new EventArgs());
+                    }
                 }
             }
             else
@@ -138,6 +147,11 @@
         {
             File.WriteAllText(fileName, string.Empty);
         }
+        public void EmployeeGradeAdded(object sender, EventArgs args)
+        {
+            Console.WriteLine("Dodano nową ocenę pracownikowi: " + Name);
+        }
+            
 
     }
 }
