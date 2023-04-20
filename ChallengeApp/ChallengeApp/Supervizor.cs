@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChallengeApp
 {
-    public class Supervizor : IEmployee
+    public class Supervizor
     {
         private List<float> scoreSupervizors = new List<float>();
         public Supervizor(string name, string surname)
@@ -123,7 +123,7 @@ namespace ChallengeApp
             }
 
         }
-        public Statistics GetStatistics()
+       /* public Statistics GetStatistics()
         {
             var statistics = new Statistics();
             statistics.Average = 0;
@@ -159,6 +159,6 @@ namespace ChallengeApp
             }
 
             return statistics;
-        }
+        }*/
     }
 }

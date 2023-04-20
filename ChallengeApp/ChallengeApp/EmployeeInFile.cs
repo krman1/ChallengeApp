@@ -1,4 +1,6 @@
-﻿namespace ChallengeApp
+﻿using static System.Formats.Asn1.AsnWriter;
+
+namespace ChallengeApp
 {
     public class EmployeeInFile : EmployeeBase
     {
@@ -101,43 +103,17 @@
         {
             var statistics = new Statistics();
             int lineCount = 0;
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
             if (File.Exists(fileName))
             {
                 using (var reader = File.OpenText(fileName))
                 {
                     string line;
-                    while (( line = reader.ReadLine()) != null)
+                    while ((line = reader.ReadLine()) != null)
                     {
                         var number = float.Parse(line);
                         Console.WriteLine(line);
-                        statistics.Max = Math.Max(statistics.Max, number);
-                        statistics.Min = Math.Min(statistics.Min, number);
-                        statistics.Average += number;
-                        lineCount ++;
-                    }   
-                }
-                statistics.Average /= lineCount;
-
-                switch (statistics.Average)
-                {
-                    case var average when average >= 80:
-                        statistics.AverageLetter = 'A';
-                        break;
-                    case var average when average >= 60:
-                        statistics.AverageLetter = 'B';
-                        break;
-                    case var average when average >= 40:
-                        statistics.AverageLetter = 'C';
-                        break;
-                    case var average when average >= 20:
-                        statistics.AverageLetter = 'D';
-                        break;
-                    default:
-                        statistics.AverageLetter = 'E';
-                        break;
+                        statistics.AddGrade(number);
+                    }
                 }
 
             }

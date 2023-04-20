@@ -1,6 +1,6 @@
 ﻿namespace ChallengeApp
 {
-    public class Employee : IEmployee 
+    public class Employee 
 
     {
         private List<float> score = new List<float>();
@@ -100,7 +100,7 @@
                     throw new Exception("Wrong letter");
             }
         }
-        public Statistics GetStatistics() 
+        /*public Statistics GetStatistics() 
         {
             var statistics = new Statistics();
             statistics.Average = 0;
@@ -136,7 +136,7 @@
             }
 
             return statistics;
-        }
+        }*/
 
     }
 }
