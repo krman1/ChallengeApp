@@ -123,11 +123,6 @@ namespace ChallengeApp
         {
             File.WriteAllText(fileName, string.Empty);
         }
-        public void EmployeeGradeAdded(object sender, EventArgs args)
-        {
-            Console.WriteLine("Dodano nową ocenę pracownikowi: " + Name);
-        }
-            
-
+        
     }
 }

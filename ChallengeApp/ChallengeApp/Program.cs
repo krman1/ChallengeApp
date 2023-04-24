@@ -6,23 +6,8 @@ Console.WriteLine("Witamy w programie XYZ do oceny Pracowników");
 Console.WriteLine("=============================================");
 Console.WriteLine();
 
-var employee = new EmployeeInMemory("Marcin", "Nowak");
-//employee.GradeAdded += employee.EmployeeGradeAdded;
-
-//employee.AddScore(10f);
-
-//var employeeInFile = new EmployeeInFile("Beata", "Kowalska");
-//employeeInFile.GradeAdded += employeeInFile.EmployeeGradeAdded;
-
-//employeeInFile.AddScore(15f);
-
-/*
-Console.WriteLine($"Average: {statisticsFile.Average}");
-Console.WriteLine($"Min: {statisticsFile.Min}");
-Console.WriteLine($"Max: {statisticsFile.Max}");
-Console.WriteLine($"AverageLetter: {statisticsFile.AverageLetter}");*/
-//employeeFile.ClearFile();   
-
+//var employeeInMemory = new EmployeeInMemory("Marcin", "Nowak");
+var employeeInFile = new EmployeeInFile("Ewa", "Kowalska");
 
 
 while (true)
@@ -35,7 +20,8 @@ while (true)
     }
     try
     {
-        employee.AddScore(input);
+        //employeeInMemory.AddScore(input);
+        employeeInFile.AddScore(input);
     }
     catch (Exception e)
     {
@@ -43,7 +29,8 @@ while (true)
     }
 }
 
-var statistics = employee.GetStatistics();
+//var statistics = employeeInMemory.GetStatistics();
+var statistics = employeeInFile.GetStatistics();
 Console.WriteLine($"Average: {statistics.Average}");
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Max: {statistics.Max}");

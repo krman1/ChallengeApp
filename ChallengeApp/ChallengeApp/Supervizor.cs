@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChallengeApp
 {
-    public class Supervizor
+    public class Supervizor 
     {
         private List<float> scoreSupervizors = new List<float>();
         public Supervizor(string name, string surname)
@@ -123,42 +123,16 @@ namespace ChallengeApp
             }
 
         }
-       /* public Statistics GetStatistics()
+        public Statistics GetStatistics()
         {
             var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
 
             foreach (var score in this.scoreSupervizors)
             {
-                statistics.Max = Math.Max(statistics.Max, score);
-                statistics.Min = Math.Min(statistics.Min, score);
-                statistics.Average += score;
-            }
-
-            statistics.Average /= this.scoreSupervizors.Count;
-
-            switch (statistics.Average)
-            {
-                case var average when average >= 80:
-                    statistics.AverageLetter = 'A';
-                    break;
-                case var average when average >= 60:
-                    statistics.AverageLetter = 'B';
-                    break;
-                case var average when average >= 40:
-                    statistics.AverageLetter = 'C';
-                    break;
-                case var average when average >= 20:
-                    statistics.AverageLetter = 'D';
-                    break;
-                default:
-                    statistics.AverageLetter = 'E';
-                    break;
+                statistics.AddGrade(score);
             }
 
             return statistics;
-        }*/
+        }
     }
 }

@@ -21,10 +21,6 @@
             if (raiting >= 0 && raiting <= 100)
             {
                 this.score.Add(raiting);
-                if (GradeAdded != null)
-                {
-                    GradeAdded(this, new EventArgs());
-                }
             }
             else
             {
@@ -89,10 +85,6 @@
             }
 
             return statistics;
-        }
-        public void EmployeeGradeAdded(object sender, EventArgs args)
-        {
-            Console.WriteLine("Dodano nową ocenę pracownikowi: " + Name);
         }
     }
 }
