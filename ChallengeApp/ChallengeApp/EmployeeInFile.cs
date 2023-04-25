@@ -25,11 +25,6 @@ namespace ChallengeApp
                 using (var writen = File.AppendText(fileName))
                 {
                     writen.WriteLine(raiting);
-
-                    if (GradeAdded != null)
-                    {
-                        GradeAdded(this, new EventArgs());
-                    }
                 }
             }
             else

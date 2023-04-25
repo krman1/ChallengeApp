@@ -6,7 +6,7 @@ Console.WriteLine("Witamy w programie XYZ do oceny Pracowników");
 Console.WriteLine("=============================================");
 Console.WriteLine();
 
-//var employeeInMemory = new EmployeeInMemory("Marcin", "Nowak");
+
 var employeeInFile = new EmployeeInFile("Ewa", "Kowalska");
 
 
@@ -20,7 +20,7 @@ while (true)
     }
     try
     {
-        //employeeInMemory.AddScore(input);
+        
         employeeInFile.AddScore(input);
     }
     catch (Exception e)
@@ -29,7 +29,7 @@ while (true)
     }
 }
 
-//var statistics = employeeInMemory.GetStatistics();
+
 var statistics = employeeInFile.GetStatistics();
 Console.WriteLine($"Average: {statistics.Average}");
 Console.WriteLine($"Min: {statistics.Min}");

@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace ChallengeApp
 {
-    public class Supervizor 
+    public class Supervizor : EmployeeBase
     {
         private List<float> scoreSupervizors = new List<float>();
         public Supervizor(string name, string surname)
+            : base(name, surname)
         {
-            this.Name = name;
-            this.Surname = surname;
         }
         public string Name
         {
@@ -22,12 +21,12 @@ namespace ChallengeApp
         {
             get; private set;
         }
-        public void AddScore(int raiting)
+        public override void AddScore(int raiting)
         {
             float result = raiting;
             this.AddScore(result);
         }
-        public void AddScore(float raiting)
+        public override void AddScore(float raiting)
         {
             if (raiting >= 0 && raiting <= 100)
             {
@@ -39,7 +38,7 @@ namespace ChallengeApp
             }
         }
 
-        public void AddScore(string raiting)
+        public override void AddScore(string raiting)
         {
             char[] letters = raiting.ToArray();
             int plus = 0;
@@ -83,7 +82,7 @@ namespace ChallengeApp
             }
         }
 
-        public void AddScore(double raiting)
+        public override void AddScore(double raiting)
         {
             float result = (float)raiting;
             this.AddScore(result);
@@ -94,7 +93,7 @@ namespace ChallengeApp
             float result = (float)raiting;
             this.AddScore(result);
         }
-        public void AddScore(char raiting)
+        public override void AddScore(char raiting)
         {
             switch (raiting)
             {
@@ -123,7 +122,7 @@ namespace ChallengeApp
             }
 
         }
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
 

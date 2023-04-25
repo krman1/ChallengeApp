@@ -1,24 +1,18 @@
 ﻿namespace ChallengeApp
 {
-    public class Employee 
+    public class Employee : EmployeeBase
 
     {
         private List<float> score = new List<float>();
 
-        public Employee(string name, string surname, int age)  
-        {
-            this.Name = name;
-            this.Surname = surname;
+        public Employee(string name, string surname, int age)
+            : base(name, surname)
+        { 
             this.Age = age;
         }
         public Employee(string name, string surname)
+            : base(name, surname)
         {
-            this.Name = name;
-            this.Surname = surname;
-        }
-        public Employee(string name)
-        {
-            this.Name = name;
         }
         public string Name
         {
@@ -32,12 +26,12 @@
         {
             get; private set;
         }
-        public void AddScore(int raiting)
+        public override void AddScore(int raiting)
         {
             float result = raiting;
             this.AddScore(result);
         }
-        public void AddScore(float raiting)
+        public override void AddScore(float raiting)
         {
             if (raiting >= 0 && raiting <= 100)
             {
@@ -49,7 +43,7 @@
             }
         }
 
-        public void AddScore(string raiting)
+        public override void AddScore(string raiting)
         {
             if (float.TryParse(raiting, out float result))
             {
@@ -61,7 +55,7 @@
             }
         }
 
-        public void AddScore(double raiting)
+        public override void AddScore(double raiting)
         {
             float result = (float)raiting;
             this.AddScore(result);     
@@ -72,7 +66,7 @@
             float result = (float)raiting;
             this.AddScore(result);
         }
-        public void AddScore(char raiting)
+        public override void AddScore(char raiting)
         {
             switch (raiting)
             {
@@ -100,7 +94,7 @@
                     throw new Exception("Wrong letter");
             }
         }
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
 
